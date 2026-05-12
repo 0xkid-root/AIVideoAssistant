@@ -38,10 +38,11 @@ def convert_to_wav(input_path: str) -> str:
     audio.export(output_path, format="wav")
     return output_path
 
-print(convert_to_wav(data))
+data_final = convert_to_wav(data)
 
 def chunk_audio(wav_path : str , chunk_minutes : int = 10) -> list:
     audio = AudioSegment.from_wav(wav_path)
+    # chunnk wale process millesecond  me work hota hai
     chunk_ms = chunk_minutes * 60 * 1000 
 
     chunks = []
@@ -54,5 +55,8 @@ def chunk_audio(wav_path : str , chunk_minutes : int = 10) -> list:
         chunks.append(chunk_path)
     
     return chunks
+
+
+print(chunk_audio(data_final))
  
 
